@@ -10,6 +10,21 @@ export function validateProject(req: Request, res: Response, next: Function) {
         })
     }
 
+    //check if field have correct data type
+    if (typeof name !== "string" || typeof clientName !== "string" || typeof status !== "string" || typeof startDate !== "string") {
+        return res.status(400).json({
+            message: "Invalid data project"
+        });
+    }
+
+    //check if project status is valid
+    const allowedStatus = ["Not Started", "active", "Completed, on_hold"];
+    if (!allowedStatus.includes(status)) {
+        return res.status(400).json({
+            message: "Invalid project status"
+        });
+    }
+
     next();
 }
 
