@@ -1,34 +1,33 @@
-
-
 # CLIENT PROJECT TRACKER
 
-## 1.OVERVIEW
+## 1. OVERVIEW
 
-## 2.FEATURES
+## 2. FEATURES
 
-## 3.TECH STACK
+## 3. TECH STACK
 
-Database: PostgreSQL
-Justification: 
+### Database: PostgreSQL
 
-Backend: Node.j, Express
-Justification:
+**Justification:**
 
-Frontend:React
-Justification:
+### Backend: Node.js + Express.js
 
-Containerization: Docker
-Justification: 
+**Justification:**
+
+### Frontend: React
+
+**Justification:**
+
+### Containerization: Docker
+
+**Justification:**
+
 
 ## 4. PROJECT STRUCTURE
 
 client-project-tracker/
-     frontend/
-     backend/
-     .gitignore
-     README.md
-     docker-compose.yml
-
-## 5.DATABASE SCHEMA
-
-## 6.AI USAGE 
+├── frontend/
+├── backend/
+├── .gitignore
+├── README.md
+└── docker-compose.yml
