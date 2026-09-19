@@ -33,3 +33,12 @@ export async function update(id: number, data: { name: string; clientName: strin
     );
     return result.rows[0];
 }
+
+export async function remove(id: number) {
+    const result = await pool.query(
+        `DELETE FROM projects
+         WHERE id = $1
+         RETURNING id`, [id]
+    );
+    return result.rows[0];
+}

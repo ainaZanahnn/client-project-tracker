@@ -11,3 +11,7 @@ export async function createProject(data: { name: string; clientName: string; st
 export async function updateProject(id: number, data: { name: string; clientName: string; status: string; startDate: string }) {
     return await projectRepository.update(id, data);
 }
+
+export async function deleteProject(id: number) {
+    return await projectRepository.remove(id);
+}

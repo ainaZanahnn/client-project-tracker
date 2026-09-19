@@ -24,3 +24,15 @@ export async function updateProject(req: Request, res: Response) {
     }
     res.status(200).json(project);
 }
+
+export async function deleteProject(req: Request, res: Response) {
+    const id = Number(req.params.id);
+    const project =await projectService.deleteProject(id);
+
+    if (!project) {
+        return res.status(404).json({
+            message: "Project not found"
+        });
+    }
+    res.status(200).json();
+}
