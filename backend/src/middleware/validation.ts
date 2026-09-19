@@ -18,7 +18,7 @@ export function validateProject(req: Request, res: Response, next: Function) {
     }
 
     //check if project status is valid
-    const allowedStatus = ["Not Started", "active", "Completed, on_hold"];
+    const allowedStatus = ["Not Started", "active", "Completed", "on_hold"];
     if (!allowedStatus.includes(status)) {
         return res.status(400).json({
             message: "Invalid project status"
@@ -41,5 +41,6 @@ export function validateId(req: Request, res: Response, next: Function) {
 
     next();
 }
+
 
 
