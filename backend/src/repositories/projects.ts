@@ -11,3 +11,15 @@ export async function findAll(){
 
     return result.rows;
 }
+
+export async function create(data: { name: string; clientName: string; status: string; startDate: string }) {
+    const { name, clientName, status, startDate } = data;
+    const result = await pool.query(
+        `INSERT INTO projects (name, client_name, status, start_date)
+         VALUES ($1, $2, $3, $4)
+         RETURNING id, name, client_name AS "clientName", status, start_date AS "startDate"`,
+         [data.name, data.clientName, data.status, data.startDate]
+    );
+
+    return result.rows;
+}
