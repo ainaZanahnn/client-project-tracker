@@ -13,7 +13,6 @@ export async function findAll(){
 }
 
 export async function create(data: { name: string; clientName: string; status: string; startDate: string }) {
-    const { name, clientName, status, startDate } = data;
     const result = await pool.query(
         `INSERT INTO projects (name, client_name, status, start_date)
          VALUES ($1, $2, $3, $4)
@@ -22,4 +21,15 @@ export async function create(data: { name: string; clientName: string; status: s
     );
 
     return result.rows;
+}
+
+export async function update(id: number, data: { name: string; clientName: string; status: string; startDate: string }) {
+    const result = await pool.query(
+        `UPDATE projects
+        SET name = $1, client_name = $2, status = $3, start_date = $4, updated_at = CURRENT_TIMESTAMP
+        WHERE id = $5
+        RETURNING id, name, client_name AS "clientName", status, start_date AS "startDate"`,
+        [data.name, data.clientName, data.status, data.startDate, id]
+    );
+    return result.rows[0];
 }

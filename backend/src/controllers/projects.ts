@@ -8,7 +8,19 @@ export async function getProjects(req: Request, res: Response) {
 }
 
 export async function createProject(req: Request, res: Response) {
-    const { name, clientName, status, startDate } = req.body;
+    const project = await projectService.createProject(req.body);
 
-    res.status(201).json(await projectService.createProject({ name, clientName, status, startDate }));
+    res.status(201).json(project);
+}
+
+export async function updateProject(req: Request, res: Response) {
+    const { id } = req.params;
+    const project = await projectService.updateProject(Number(id), req.body);
+
+    if (!project) {
+        return res.status(404).json({
+            message: "Project not found"
+        });
+    }
+    res.status(200).json(project);
 }
