@@ -19,3 +19,18 @@ export async function getTasksByProject(req: Request, res: Response) {
         }
     })
 }
+
+export async function markTaskComplete(req: Request, res: Response) {
+  const projectId = Number(req.params.projectId);
+  const taskId = Number(req.params.taskId);
+
+  const task = await taskService.markTaskComplete(projectId, taskId);
+
+  if (!task) {
+    return res.status(404).json({
+      message: "Task not found"
+    });
+  }
+
+  res.status(200).json(task);
+}
