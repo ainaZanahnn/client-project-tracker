@@ -18,7 +18,7 @@ export function validateProject(req: Request, res: Response, next: Function) {
     }
 
     //check if project status is valid
-    const allowedStatus = ["Not Started", "active", "Completed", "on_hold"];
+    const allowedStatus = [ "NOT_STARTED", "IN_PROGRESS", "COMPLETED"];
     if (!allowedStatus.includes(status)) {
         return res.status(400).json({
             message: "Invalid project status"
@@ -28,15 +28,44 @@ export function validateProject(req: Request, res: Response, next: Function) {
     next();
 }
 
+export function validateId(paramName: string) {
+    return function (req: Request, res: Response, next: Function) {
+        const value = req.params[paramName];
 
-export function validateId(req: Request, res: Response, next: Function) {
-    const { id } = req.params;
+        // check if id valid
+        if (!Number.isInteger(Number(value)) || Number(value) <= 0) {
+            return res.status(400).json({
+                message: "Invalid ID"
+            });
+        }
 
-    //check if id valid
-     if (!Number.isInteger(Number(id)) || Number(id) <= 0) {
-        return res.status(400).json({
-             message: "invalid project ID"
-        })
+        next();
+    };
+}
+
+export function validateTask(req: Request, res: Response, next: Function) {
+    const { status, page } = req.query;
+
+    //check if task status is valid
+    if (status !== undefined) {
+        const allowedStatus = ["NOT_STARTED", "IN_PROGRESS", "COMPLETED"];
+        
+        if ( typeof  status !== "string" || !allowedStatus.includes(status)) {
+            return res.status(400).json ({
+                message: "Invalid task status"
+            });
+        }
+    }
+
+    //check page number
+    if (page !== undefined) {
+        const pageNumber = Number(page);
+        
+        if ( !Number.isInteger(pageNumber) || pageNumber <= 0) {
+            return res.status(400).json({
+                message: "Invalid page number"
+            })
+        }
     }
 
     next();
