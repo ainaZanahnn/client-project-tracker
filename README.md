@@ -76,7 +76,7 @@ cd backend
 npm test
 
 
-## 5. PROJECT STATUS
+## 4. PROJECT STATUS
 
 1. PostgreSQL Database         ✅ - db schema and seed data (initiliaze via docker compose)
 2. Project List API            ✅ 
@@ -95,11 +95,11 @@ npm test
 15. README                     ✅      
 
 
-## 6. THE OUTCOME 
+## 5. THE OUTCOME 
 
 project list -> select project -> view project tasks - > filter tasks by status -> mark task as completed
 
-## 6. THE TESTING 
+## 5. THE TESTING 
 
 I chose these tests because they cover three important parts of the application's core workflow (cover different API operation) which is retrieving and filtering data, modifying existing data, and creating new data.
 
@@ -107,7 +107,7 @@ I chose these tests because they cover three important parts of the application'
 2. Mark task as complete
 3. Create project
 
-## 7. AI USAGE 
+## 6. AI USAGE 
 
 AI tools were used as a development aid during the assignment, mainly for:
 
@@ -118,39 +118,41 @@ AI tools were used as a development aid during the assignment, mainly for:
 5. Assist in frontend styling (css)
 6. Assist in frontend for components and pages. 
 
-**AI Tool:** chatgpt
+### AI Tool: chatgpt
+
 **Justification:** ChatGPT was used as my available AI development assistant during the assignment. I had previously used Claude Code during internship, but my subscription was no longer active.
 
-## 8. REMAINING WORK & NEXT STEPS
+
+## 7. REMAINING WORK & NEXT STEPS
 
 With the six-hour time limit, I prioritised completing and testing the core backend APIs and implementing the main frontend functionality. Some frontend features and UI elements remain unimplemented and were not completed within the available time. Therefore the next steps that i will take are: 
 
-Create Project
-1.Types: Add CreateProjectData type.
-2.API Service: Add createProject() to projectApi.ts.
-3.Component: Build CreateProjectForm.tsx.
-4.Page/App: Integrate the form into the project page through App.tsx.
-5.UI: Add validation, loading/error handling, and styling in App.css.
+### Create Project
+1. Types: Add CreateProjectData type.
+2. API Service: Add createProject() to projectApi.ts.
+3. Component: Build CreateProjectForm.tsx.
+4. Page/App: Integrate the form into the project page through App.tsx.
+5. UI: Add validation, loading/error handling, and styling in App.css.
 
-Update Project
-1.API Service: Add updateProject() to projectApi.ts.
-2.Component: Add edit form/action to the project components.
-3.Page/App: Connect the selected project to the edit flow.
-4.UI: Add validation and styling.
+### Update Project
+1. API Service: Add updateProject() to projectApi.ts.
+2. Component: Add edit form/action to the project components.
+3. Page/App: Connect the selected project to the edit flow.
+4. UI: Add validation and styling.
 
-Delete Project
-1.API Service: Add deleteProject() to projectApi.ts.
-2.Component: Add delete action and confirmation.
-3.Page/App: Update the project list after successful deletion.
-4.UI: Add appropriate button and feedback states.
+### Delete Project
+1. API Service: Add deleteProject() to projectApi.ts.
+2. Component: Add delete action and confirmation.
+3. Page/App: Update the project list after successful deletion.
+4. UI: Add appropriate button and feedback states.
 
-Task Pagination
-1.Types: Use the existing TaskPagination type.
-2.API Service: Pass the selected page to getTasksByProject().
-3.Component: Add pagination controls.
-4.Page: Manage page state in projectDetailPage.tsx.
-5.UI: Add Previous/Next controls and page indicators.
+### Task Pagination
+1. Types: Use the existing TaskPagination type.
+2. API Service: Pass the selected page to getTasksByProject().
+3. Component: Add pagination controls.
+4. Page: Manage page state in projectDetailPage.tsx.
+5. UI: Add Previous/Next controls and page indicators.
 
-UI & Testing
+### UI & Testing
 UI: Refine App.css and index.css.
 Test: frontend-to-backend flows.
