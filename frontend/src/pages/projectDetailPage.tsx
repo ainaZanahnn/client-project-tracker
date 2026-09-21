@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Task } from "../types/tasks";
-import { getTasksByProject } from "../services/tasksApi";
+import { getTasksByProject,  markTaskComplete,} from "../services/tasksApi";
 import TaskTable from "../components/TasksTable";
 
 interface ProjectDetailPageProps {
@@ -13,21 +13,39 @@ export default function ProjectDetailPage({
     const [tasks, setTasks] = useState<Task[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [status, setStatus] = useState("");
+
 
     useEffect(() => {
     async function loadTasks() {
       try {
-        const result = await getTasksByProject(projectId);
+        const result = await getTasksByProject(
+          projectId,
+          status || undefined
+        );
+
         setTasks(result.data);
       } catch {
         setError("Failed to load tasks");
       } finally {
-        setLoading(false);
+         setLoading(false);
       }
     }
 
     loadTasks();
-  }, [projectId]);
+  },[projectId, status]);
+
+    async function handleMarkComplete(taskId: number) {
+    try {
+        setError("");
+        await markTaskComplete(projectId, taskId);
+        
+        const result = await getTasksByProject(projectId, status || undefined);
+        setTasks(result.data);
+    } catch {
+        setError("Failed to mark task as complete");
+    }}
+
 
   if (loading) {
     return <p>Loading tasks...</p>;
@@ -39,8 +57,9 @@ export default function ProjectDetailPage({
 
   return (
     <div>
-      <h1>Project Tasks</h1>
-      <TaskTable tasks={tasks} />
+        <h1>Project Tasks</h1>
+
+        <TaskTable tasks={tasks} onMarkComplete={handleMarkComplete}/>
     </div>
-  );
+    );
 }

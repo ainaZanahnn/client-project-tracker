@@ -1,4 +1,4 @@
-import type { TaskResponse } from "../types/tasks";
+import type { Task, TaskResponse } from "../types/tasks";
 
 const API_URL = "http://localhost:5000/api";
 
@@ -22,4 +22,20 @@ const params = new URLSearchParams();
     }
     return response.json();
 }
+
+export async function markTaskComplete(
+    projectId: number,
+    taskId: number
+): Promise<Task> {
+const response = await fetch(`${API_URL}/projects/${projectId}/tasks/${taskId}/complete`,{method: "PATCH",});
+    if (!response.ok) {
+        const error = await response.json();
+
+        throw new Error(
+            error.message || "Failed to mark task as complete"
+        );
+    }
+    return response.json();
+}
+
 

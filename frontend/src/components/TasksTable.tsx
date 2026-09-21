@@ -1,10 +1,12 @@
 import type { Task } from "../types/tasks";
 
 interface TaskTableProps {
-  tasks: Task[];
+    tasks: Task[];
+    onMarkComplete: (taskId: number) => void;
+
 }
 
-export default function TaskTable({ tasks }: TaskTableProps) {
+export default function TaskTable({ tasks,  onMarkComplete, }: TaskTableProps) {
     return (
         <table className="task-table">
         <thead>
@@ -20,7 +22,17 @@ export default function TaskTable({ tasks }: TaskTableProps) {
             {tasks.map((task) => (
             <tr key={task.id}>
                 <td>{task.title}</td>
-                <td>{task.status}</td>
+                    <td>
+                    <select value={task.status} onChange={(event) => {
+                        if (event.target.value === "COMPLETED") {
+                            onMarkComplete(task.id);
+                        }
+                    }} disabled={task.status === "COMPLETED"}>
+                    <option value="NOT_STARTED">Not Started</option>
+                    <option value="IN_PROGRESS">In Progress</option>
+                    <option value="COMPLETED">Completed</option>    
+                    </select>
+                    </td>
                 <td>{task.assignee || "-"}</td>
                 <td>{task.dueDate || "-"}</td>
             </tr>
