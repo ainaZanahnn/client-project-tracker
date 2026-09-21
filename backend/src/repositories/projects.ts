@@ -20,7 +20,7 @@ export async function create(data: { name: string; clientName: string; status: s
          [data.name, data.clientName, data.status, data.startDate]
     );
 
-    return result.rows;
+    return result.rows[0];
 }
 
 export async function update(id: number, data: { name: string; clientName: string; status: string; startDate: string }) {
