@@ -50,30 +50,30 @@ Create a .env file inside the backend folder (use .env.example from the backend 
 
 (databse and seeder fiel automatically executed during this setup)
 
-From the project root: docker compose up -d
-Verify conatiner running: docker compose ps
+1. From the project root: docker compose up -d
+2. Verify conatiner running: docker compose ps
 
 (if want to reset database and run the seeder again)
 
-docker compose down -v 
-docker compose up -d
+3. docker compose down -v 
+4. docker compose up -d
 
 ### 4. Install and Start Backend
 
-cd backend
-npm install
-npm run dev
+1. cd backend
+2. npm install
+3. npm run dev
 
 ### 5. Install and Start frontend
 
-cd frontend 
-npm install
-npm run dev
+1. cd frontend 
+2. npm install
+3. npm run dev
 
 ### 6. Run API Test
 
-cd backend
-npm test
+1. cd backend
+2. npm test
 
 
 ## 4. PROJECT STATUS
