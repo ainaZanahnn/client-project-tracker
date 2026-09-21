@@ -36,7 +36,7 @@ export async function markComplete(projectId: number, taskId: number) {
     `UPDATE tasks
      SET status = 'COMPLETED', updated_at = CURRENT_TIMESTAMP
      WHERE id = $1 AND project_id = $2
-     RETURNINGid, title, project_id AS "projectId", status, assignee, due_date AS "dueDate"`,
+     RETURNING id, title, project_id AS "projectId", status, assignee, due_date AS "dueDate"`,
     [taskId, projectId]
   );
 
