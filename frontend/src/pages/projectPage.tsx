@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-
 import type { Project } from "../types/project";
 import { getProjects } from "../services/projectApi";
-
 import ProjectTable from "../components/ProjectTable";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 
-export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
+interface ProjectsPageProps {
+  onProjectClick: (projectId: number) => void;
+}
+
+export default function ProjectsPage({
+  onProjectClick,
+}: ProjectsPageProps) {  const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -38,7 +41,7 @@ export default function ProjectsPage() {
   return (
     <div>
       <h1>Projects</h1>
-      <ProjectTable projects={projects} />
+      <ProjectTable projects={projects} onProjectClick={onProjectClick}/>    
     </div>
   );
 }
