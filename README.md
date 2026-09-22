@@ -50,30 +50,30 @@ Create a .env file inside the backend folder (use .env.example from the backend 
 
 (databse and seeder fiel automatically executed during this setup)
 
-1. From the project root: docker compose up -d
-2. Verify conatiner running: docker compose ps
+- From the project root: docker compose up -d
+- Verify conatiner running: docker compose ps
 
 (if want to reset database and run the seeder again)
 
-3. docker compose down -v 
-4. docker compose up -d
+- docker compose down -v 
+- docker compose up -d
 
 ### 4. Install and Start Backend
 
-1. cd backend
-2. npm install
-3. npm run dev
+- cd backend
+- npm install
+- npm run dev
 
 ### 5. Install and Start frontend
 
-1. cd frontend 
-2. npm install
-3. npm run dev
+- cd frontend 
+- npm install
+- npm run dev
 
 ### 6. Run API Test
 
-1. cd backend
-2. npm test
+- cd backend
+- npm test
 
 
 ## 4. PROJECT STATUS
@@ -154,5 +154,5 @@ With the six-hour time limit, I prioritised completing and testing the core back
 5. UI: Add Previous/Next controls and page indicators.
 
 ### UI & Testing
-UI: Refine App.css and index.css.
-Test: frontend-to-backend flows.
+- UI: Refine App.css and index.css.
+- Test: frontend-to-backend flows.
